@@ -9,11 +9,15 @@ renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
 camera.position.setZ(30);
 
-// Create a Torus
-const geometry = new THREE.TorusGeometry(10, 3, 16, 100);
-const material = new THREE.MeshStandardMaterial({ color: 0xff6347 });
-const torus = new THREE.Mesh(geometry, material);
-scene.add(torus);
+// Create a Star
+const geometry = new THREE.SphereGeometry(5, 32, 32); // 星の形状
+const material = new THREE.MeshStandardMaterial({
+    color: 0xffd700,
+    emissive: 0xffff00,
+    emissiveIntensity: 0.5
+});
+const star = new THREE.Mesh(geometry, material);
+scene.add(star);
 
 // Lighting
 const pointLight = new THREE.PointLight(0xffffff);
@@ -21,23 +25,11 @@ pointLight.position.set(20, 20, 20);
 const ambientLight = new THREE.AmbientLight(0xffffff);
 scene.add(pointLight, ambientLight);
 
-// Star Field
-function addStar() {
-    const starGeometry = new THREE.SphereGeometry(0.25, 24, 24);
-    const starMaterial = new THREE.MeshStandardMaterial({ color: 0xffffff });
-    const star = new THREE.Mesh(starGeometry, starMaterial);
-
-    const [x, y, z] = Array(3).fill().map(() => THREE.MathUtils.randFloatSpread(100));
-    star.position.set(x, y, z);
-    scene.add(star);
-}
-Array(200).fill().forEach(addStar);
-
 // Animation Loop
 function animate() {
     requestAnimationFrame(animate);
-    torus.rotation.x += 0.01;
-    torus.rotation.y += 0.005;
+    star.rotation.x += 0.01;
+    star.rotation.y += 0.005;
     renderer.render(scene, camera);
 }
 animate();
@@ -48,9 +40,9 @@ gsap.registerPlugin(ScrollTrigger);
 gsap.from("#about", {
     scrollTrigger: {
         trigger: "#about",
-        start: "top 80%",
+        start: "top 85%",
         end: "top 30%",
-        toggleActions: "play none none none",
+        toggleActions: "play none none reset",
     },
     opacity: 0,
     duration: 1,
@@ -60,9 +52,9 @@ gsap.from("#about", {
 gsap.from("#projects", {
     scrollTrigger: {
         trigger: "#projects",
-        start: "top 80%",
+        start: "top 85%",
         end: "top 30%",
-        toggleActions: "play none none none",
+        toggleActions: "play none none reset",
     },
     opacity: 0,
     duration: 1,
@@ -72,9 +64,9 @@ gsap.from("#projects", {
 gsap.from("#contact", {
     scrollTrigger: {
         trigger: "#contact",
-        start: "top 80%",
+        start: "top 85%",
         end: "top 30%",
-        toggleActions: "play none none none",
+        toggleActions: "play none none reset",
     },
     opacity: 0,
     duration: 1,
