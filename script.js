@@ -45,21 +45,37 @@ animate();
 // GSAP - Scroll Animation
 gsap.registerPlugin(ScrollTrigger);
 
-gsap.from("header", { opacity: 0, duration: 1.5, y: -50 });
 gsap.from("#about", {
-    scrollTrigger: "#about",
+    scrollTrigger: {
+        trigger: "#about",
+        start: "top 80%",
+        end: "top 30%",
+        toggleActions: "play none none none",
+    },
     opacity: 0,
     duration: 1,
     y: 50
 });
+
 gsap.from("#projects", {
-    scrollTrigger: "#projects",
+    scrollTrigger: {
+        trigger: "#projects",
+        start: "top 80%",
+        end: "top 30%",
+        toggleActions: "play none none none",
+    },
     opacity: 0,
     duration: 1,
     y: 50
 });
+
 gsap.from("#contact", {
-    scrollTrigger: "#contact",
+    scrollTrigger: {
+        trigger: "#contact",
+        start: "top 80%",
+        end: "top 30%",
+        toggleActions: "play none none none",
+    },
     opacity: 0,
     duration: 1,
     y: 50
