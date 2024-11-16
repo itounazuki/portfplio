@@ -43,7 +43,24 @@ function animate() {
 animate();
 
 // GSAP - Scroll Animation
+gsap.registerPlugin(ScrollTrigger);
+
 gsap.from("header", { opacity: 0, duration: 1.5, y: -50 });
-gsap.from("#about", { scrollTrigger: "#about", opacity: 0, duration: 1, y: 50 });
-gsap.from("#projects", { scrollTrigger: "#projects", opacity: 0, duration: 1, y: 50 });
-gsap.from("#contact", { scrollTrigger: "#contact", opacity: 0, duration: 1, y: 50 });
+gsap.from("#about", {
+    scrollTrigger: "#about",
+    opacity: 0,
+    duration: 1,
+    y: 50
+});
+gsap.from("#projects", {
+    scrollTrigger: "#projects",
+    opacity: 0,
+    duration: 1,
+    y: 50
+});
+gsap.from("#contact", {
+    scrollTrigger: "#contact",
+    opacity: 0,
+    duration: 1,
+    y: 50
+});
